@@ -75,5 +75,9 @@ public class Feedback {
     public void setUpdateTimestamp(LocalDate updateTimestamp) {
         this.updateTimestamp = updateTimestamp;
     }
-}
 
+    public boolean isPresent() {
+        return false;
+    }
+
+}

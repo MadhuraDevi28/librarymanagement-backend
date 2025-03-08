@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-public class FeedbackController {
+public class FeedbackController  {
 
     @Autowired
     private FeedbackService feedbackService;
@@ -30,8 +30,8 @@ public class FeedbackController {
     }
 
     @GetMapping("/book/{bookId}")
-    public ResponseEntity<List<Feedback>> getFeedbackByBookId(@PathVariable int bookId) {
-        List<Feedback> feedbackList = feedbackService.getFeedbackByBookId(bookId);
+    public ResponseEntity<Optional<Feedback>> getFeedbackByBookId(@PathVariable int bookId) {
+        Optional<Feedback> feedbackList = feedbackService.getFeedbackByBookId(bookId);
         if (feedbackList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
