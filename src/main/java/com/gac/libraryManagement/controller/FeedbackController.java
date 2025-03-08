@@ -11,18 +11,18 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/feedback")
+@RequestMapping("/api")
 public class FeedbackController {
 
     @Autowired
     private FeedbackService feedbackService;
 
-    @GetMapping
+    @GetMapping("/feedback/getAll")
     public ResponseEntity<List<Feedback>> getAllFeedback() {
         return new ResponseEntity<>(feedbackService.getAllFeedback(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/feedback/{id}")
     public ResponseEntity<Feedback> getFeedbackById(@PathVariable int id) {
         Optional<Feedback> feedback = feedbackService.getFeedbackById(id);
         return feedback.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
@@ -38,13 +38,13 @@ public class FeedbackController {
         return new ResponseEntity<>(feedbackList, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/feedback/create")
     public ResponseEntity<Feedback> addFeedback(@RequestBody Feedback feedback) {
         Feedback newFeedback = feedbackService.addFeedback(feedback);
         return new ResponseEntity<>(newFeedback, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/feedback/{id}")
     public ResponseEntity<Feedback> updateFeedback(@PathVariable int id, @RequestBody Feedback feedback) {
         try {
             Feedback updatedFeedback = feedbackService.updateFeedback(id, feedback);
@@ -54,7 +54,7 @@ public class FeedbackController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/feedback/{id}")
     public ResponseEntity<Void> deleteFeedback(@PathVariable int id) {
         feedbackService.deleteFeedback(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
