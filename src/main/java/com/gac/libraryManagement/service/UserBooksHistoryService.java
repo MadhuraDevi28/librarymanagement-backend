@@ -5,18 +5,39 @@ import com.gac.libraryManagement.repository.UserBooksHistoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserBooksHistoryService {
-    public  final UserBooksHistoryRepository history;
 
-    public UserBooksHistoryService(UserBooksHistoryRepository history) {
-        this.history = history;
+    private final UserBooksHistoryRepository userBooksHistoryRepository;
+
+    public UserBooksHistoryService(UserBooksHistoryRepository userBooksHistoryRepository) {
+        this.userBooksHistoryRepository = userBooksHistoryRepository;
     }
 
-    public List<UserBooksHistory> gethistory(String userid) {
+    // Get all UserBooksHistory records
+    public List<UserBooksHistory> getAllHistory() {
+        return userBooksHistoryRepository.findAll();
+    }
 
-            return history.findByUserId(Integer.parseInt(userid));
+    // Get UserBooksHistory by userId
+    public List<UserBooksHistory> getHistoryByUserId(int userId) {
+        return userBooksHistoryRepository.findByUserId(userId);
+    }
 
+    // Create or update UserBooksHistory
+    public UserBooksHistory saveHistory(UserBooksHistory userBooksHistory) {
+        return userBooksHistoryRepository.save(userBooksHistory);
+    }
+
+    // Get a UserBooksHistory by ID
+    public Optional<UserBooksHistory> getHistoryById(Long id) {
+        return userBooksHistoryRepository.findById(id);
+    }
+
+    // Delete UserBooksHistory by ID
+    public void deleteHistory(Long id) {
+        userBooksHistoryRepository.deleteById(id);
     }
 }
