@@ -10,14 +10,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
     private final UserDetailsService userDetailsService;
 
     public UserController(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
-
+    @GetMapping("/test")
+    public ResponseEntity<String> testEndpoint() {
+        return ResponseEntity.ok("API is working");
+    }
     @GetMapping("/getUser")
     public ResponseEntity<List<UserDetails>> getUser() {
         return ResponseEntity.ok(userDetailsService.getAllUserDetails());

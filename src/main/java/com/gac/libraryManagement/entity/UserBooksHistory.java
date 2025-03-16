@@ -9,13 +9,13 @@ public class UserBooksHistory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BookHistoryId")
+    @Column(name = "book_history_id")
     private int bookHistoryId;
 
-    @Column(name = "BorrowDate")
+    @Column(name = "borrow_date")
     private LocalDate borrowDate;
 
-    @Column(name = "ReturnDate")
+    @Column(name = "return_date")
     private LocalDate returnDate;
 
     @Column(name = "book_id")

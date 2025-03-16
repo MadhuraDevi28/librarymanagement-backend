@@ -36,16 +36,16 @@ public class Books {
     @Column(name = "purchased_qty")
     private int purchasedQty;
 
-    @Column(name = "PurchaseDate")
+    @Column(name = "Purchase_date")
     private LocalDate purchaseDate;
 
     @Column(name = "user_id")
     private int userId;
 
-    @Column(name = "CreateTimestamp")
+    @Column(name = "Create_timestamp")
     private LocalDate createTimestamp;
 
-    @Column(name = "UpdateTimestamp")
+    @Column(name = "Update_timestamp")
     private LocalDate updateTimestamp;
 
     @Column(name = "book_no")
